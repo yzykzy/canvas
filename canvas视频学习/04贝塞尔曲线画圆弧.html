@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <canvas id="canvas">
+
+  </canvas>
+
+  <script>
+    function draw() {
+      /** @type {HTMLCanvasElement} */
+      let canvas = document.getElementById('canvas')
+      canvas.width = '1000'
+      canvas.height = '500'
+      let ctx = canvas.getContext('2d')
+
+      ctx.beginPath()
+        // 第1个点
+      ctx.moveTo(300, 200)
+        // 第二个点和第三个点 和圆弧半径
+      ctx.arcTo(300, 250, 250, 250, 50)
+      ctx.stroke()
+
+      ctx.closePath()
+
+    }
+
+    draw()
+  </script>
+
+</body>
+
+</html>

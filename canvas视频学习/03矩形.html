@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+
+
+  <script>
+    function draw() {
+      /** @type {HTMLCanvasElement} */
+      let canvas = document.getElementById('canvas')
+      canvas.width = '1000'
+      canvas.height = '500'
+      let ctx = canvas.getContext('2d')
+
+      // ctx.fillRect(100, 200, 100, 100) // x,y,宽,高 
+      ctx.strokeRect(100, 100, 200, 100)
+      ctx.fillRect(200, 150, 200, 100)
+        // ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight) //清除
+      let height = 0
+      let clear = setInterval(() => {
+        height++
+        ctx.clearRect(0, 0, canvas.clientWidth, height)
+        if (height > canvas.clientHeight) {
+          clearInterval(clear)
+        }
+      }, 30)
+    }
+
+    draw()
+  </script>
+</body>
+
+</html>

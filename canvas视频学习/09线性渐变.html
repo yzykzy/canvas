@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+
+  <script>
+    // 二次
+
+    /** @type {HTMLCanvasElement} */
+    let canvas = document.getElementById('canvas')
+    canvas.width = '1000'
+    canvas.height = '500'
+    let ctx = canvas.getContext('2d')
+      // 创建线性渐变
+      /*     let linearGradient = ctx.createLinearGradient(100, 200, 400, 500)
+            // 添加渐变颜色
+          linearGradient.addColorStop(0, 'red')
+          linearGradient.addColorStop(0.3, '#ffcccc')
+          linearGradient.addColorStop(1, 'blue')
+          ctx.fillStyle = linearGradient
+          ctx.fillRect(100, 200, 300, 300) */
+
+    let index = 0
+
+    function render() {
+      ctx.clearRect(0, 0, 1000, 500)
+      index += 0.005
+      if (index > 1) {
+        index = 0
+      }
+      let linearGradient = ctx.createLinearGradient(100, 200, 400, 500)
+        // 添加渐变颜色
+      linearGradient.addColorStop(0, 'red')
+      linearGradient.addColorStop(index, '#ffcccc')
+      linearGradient.addColorStop(1, 'blue')
+      ctx.fillStyle = linearGradient
+      ctx.fillRect(100, 200, 300, 300)
+      requestAnimationFrame(render)
+    }
+
+    requestAnimationFrame(render)
+  </script>
+</body>
+
+</html>

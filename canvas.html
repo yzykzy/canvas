@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      background-color: black;
+    }
+    
+    #first {
+      background-color: #fff;
+      margin: 200px 30%;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <canvas id="first">
+      canvas的学习
+    </canvas>
+
+
+  <script>
+    let canvas = document.getElementById('first')
+    console.log(canvas)
+    canvas.width = '500'
+    canvas.height = '500'
+    let ctx = canvas.getContext('2d')
+    console.log(ctx);
+    // 设置返回所创建边角的类型，当两条线交汇时。
+    ctx.lineJoin = 'round'
+
+    // 开始绘制
+    ctx.beginPath()
+      // 绘制起点 
+    ctx.moveTo(0, 0)
+      // 绘制下一个点
+    ctx.lineTo(300, 300)
+    ctx.lineTo(400, 450)
+
+    // 结束绘画
+    ctx.closePath()
+
+    // 线宽
+    ctx.lineWith = 5
+      // 填充样式
+    ctx.fillStyle = 'green'
+      // 填充路径
+    ctx.fill()
+
+    ctx.strokeStyle = 'red'
+      // ctx.stroke()填充边框    
+    ctx.stroke()
+
+    ctx.fillStyle = '#ff0';
+    //  绘制一个矩形
+    ctx.fillRect(30, 20, 120, 60);
+    ctx.strokeStyle = '#00f';
+    // 填充一个矩形
+    ctx.strokeRect(30, 130, 120, 60);
+
+
+    // 绘制字符串
+    ctx.fillStyle = '#00f'
+    ctx.font = 'italic 50px 隶书'
+    ctx.textBaseline = 'top'
+    ctx.fillText('真是帅', 0, 0);
+
+    ctx.strokeStyle = 'f0f';
+    ctx.font = 'bold 45px 宋体';
+    ctx.strokeText('严我爱你', 0, 50, 200);
+  </script>
+</body>
+
+</html>

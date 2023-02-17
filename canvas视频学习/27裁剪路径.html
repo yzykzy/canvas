@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+
+  <script>
+    // 二次
+
+    /** @type {HTMLCanvasElement} */
+    let canvas = document.getElementById('canvas')
+    canvas.width = '800'
+    canvas.height = '800'
+    let ctx = canvas.getContext('2d')
+
+    ctx.fillStyle = 'red'
+    ctx.fillRect(0, 0, 100, 100)
+    ctx.save()
+
+    ctx.fillStyle = 'blue'
+    ctx.fillRect(100, 100, 100, 100)
+    ctx.save()
+
+    ctx.fillStyle = 'yellow'
+    ctx.fillRect(200, 200, 100, 100)
+    ctx.save()
+
+    ctx.fillStyle = 'green'
+    ctx.fillRect(300, 300, 100, 100)
+
+    ctx.restore() //恢复上一个保存的状态  黄色
+    ctx.fillRect(400, 400, 100, 100)
+
+    ctx.restore() // 蓝色
+    ctx.fillRect(500, 500, 100, 100)
+
+    ctx.restore() // 红色
+    ctx.fillRect(600, 600, 100, 100)
+  </script>
+</body>
+
+</html>

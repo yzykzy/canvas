@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    button.active {
+      color: #fff;
+      background-color: orange;
+    }
+  </style>
+</head>
+
+<body>
+
+  <canvas id="canvas" width="1900" height="600"></canvas>
+  <hr>
+  <button id="boldBtn">粗线条</button>
+  <button id="thinBtn">细线条</button>
+  <button id="saveBtn">保存签名</button>
+  <input type="color" name="" id="color" value=""></input>
+  <button class="clearBtn">橡皮擦</button>
+  <button id="nullBtn">清空画布</button>
+
+  <script>
+    // 获取canvas画布和绘制的上下文对象
+    /** @type {HTMLCanvasElement} */
+
+    let canvas = document.querySelector('#canvas')
+    let ctx = canvas.getContext('2d')
+    ctx.lineJoin = 'round'
+      // 开端和结束也是园
+    ctx.lineCap = 'round'
+
+    // 获取输入框和按钮
+    let boldBtn = document.querySelector('#boldBtn')
+    let thinBtn = document.querySelector('#thinBtn')
+      // 保存签名
+    let saveBtn = document.querySelector('#saveBtn')
+      // 颜色
+    let inputColor = document.querySelector('#color')
+      // 橡皮檫
+    let clearBtn = document.querySelector('.clearBtn')
+      // 清空画布
+    let nullBtn = document.querySelector('#nullBtn')
+
+    // 设置允许绘制的变量
+    let isDraw = false
+
+    canvas.onmousedown = function() {
+      isDraw = true
+      ctx.beginPath()
+      let x = event.pageX - canvas.offsetLeft
+      let y = event.pageY - canvas.offsetTop
+
+      ctx.moveTo(x, y)
+
+    }
+
+    canvas.onmousemove = function() {
+      if (isDraw) {
+        let x = event.pageX - canvas.offsetLeft
+        let y = event.pageY - canvas.offsetTop
+        ctx.lineTo(x, y)
+        ctx.stroke()
+      }
+    }
+
+    canvas.onmouseleave = function() {
+      isDraw = false
+      ctx.closePath()
+    }
+
+    canvas.onmouseup = function() {
+      isDraw = false
+      ctx.closePath()
+
+    }
+
+    boldBtn.onclick = function() {
+      ctx.globalCompositeOperation = "source-over"
+      boldBtn.classList.add('active')
+      thinBtn.classList.remove('active')
+      clearBtn.classList.remove('active')
+      ctx.lineWidth = 20
+    }
+    thinBtn.onclick = function() {
+      ctx.globalCompositeOperation = "source-over"
+      thinBtn.classList.add('active')
+      boldBtn.classList.remove('active')
+      clearBtn.classList.remove('active')
+      ctx.lineWidth = 2
+    }
+
+    clearBtn.onclick = function() {
+      ctx.globalCompositeOperation = "destination-out"
+      clearBtn.classList.add('active')
+      boldBtn.classList.remove('active')
+      thinBtn.classList.remove('active')
+      cyx.lineWidth = 30
+    }
+
+    nullBtn.onclick = function() {
+      ctx.clearRect(0, 0, 1900, 600)
+    }
+
+    saveBtn.onclick = function() {
+      let urlData = canvas.toDataURL() //把图像上的数据转化为地址
+        // let img = new Image()
+        // img.src = urlData
+        // document.body.appendChild(img)
+
+      let downloadA = document.createElement('a')
+      downloadA.setAttribute('download', '酷炫签名')
+      downloadA.href = urlData
+      downloadA.click()
+    }
+
+    inputColor.onchange = function() {
+      ctx.strokeStyle = inputColor.value
+    }
+  </script>
+</body>
+
+</html>

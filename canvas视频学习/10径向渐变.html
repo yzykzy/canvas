@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+
+  <script>
+    /** @type {HTMLCanvasElement} */
+    let canvas = document.getElementById('canvas')
+    canvas.width = '1000'
+    canvas.height = '500'
+    let ctx = canvas.getContext('2d')
+
+    let index = 0
+
+    let radiaGradient = ctx.createRadialGradient(300, 200, 0, 300, 200, 100) //径向渐变2个园 (x1,y1,半径1,x2,y2,半径2)
+
+    radiaGradient.addColorStop(0, 'red')
+    radiaGradient.addColorStop(0.3, '#ffcccc')
+    radiaGradient.addColorStop(1, 'blue')
+    ctx.fillStyle = radiaGradient
+
+    ctx.fillRect(0, 0, 600, 400)
+  </script>
+</body>
+
+</html>

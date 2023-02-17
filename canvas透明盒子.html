@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #canvas {
+      border: 1px solid #f1939c;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <canvas id="canvas"></canvas>
+  </div>
+
+  <script>
+    let canvas = document.querySelector('#canvas')
+    console.log(canvas, "canvas")
+    canvas.width = '1000'
+    canvas.height = '500'
+    let ctx = canvas.getContext('2d')
+    console.log(ctx, "ctx")
+
+    ctx.fillStyle = 'rgba(200,0,0)'
+    ctx.fillRect(10, 10, 50, 50)
+
+    ctx.fillStyle = 'rgba(0,0,200,0.5)'
+    ctx.fillRect(20, 20, 50, 50)
+
+    ctx.clearRect(30, 10, 10, 20)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    function draw() {
+      let canvas = document.querySelector('#canvas')
+      canvas.width = '1000'
+      canvas.height = '500'
+
+      let ctx = canvas.getContext('2d')
+
+      let lineargradient = ctx.createLinearGradient(0, 0, 150, 150)
+      let radialgradient = ctx.createRadialGradient(75, 75, 0, 75, 75, 100)
+
+      // 线条渐变
+      lineargradient.addColorStop(0, 'white')
+      lineargradient.addColorStop(1, 'black')
+
+      ctx.fillStyle = lineargradient
+
+      ctx.fillRect(10, 10, 130, 130)
+
+      // 圆形渐变
+
+    }
+
+    draw()
+  </script>
+</body>
+
+</html>

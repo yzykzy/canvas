@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <canvas id="canvas"></canvas>
+  </div>
+  <script>
+    let canvas = document.getElementById('canvas')
+    console.log(canvas)
+    canvas.width = '1000'
+    canvas.height = '500'
+
+    let ctx = canvas.getContext('2d')
+    console.log(ctx, "ctx")
+      // 设置阴影的模糊程度
+    ctx.shadowBlur = 5.6
+
+    // 设置阴影的颜色
+    ctx.shadowColor = '#222'
+
+    // 设置阴影的xy 方向的偏移量
+    ctx.shadowOffsetX = 10
+    ctx.shadowOffsetY = -6
+
+    ctx.fillStyle = '#00f'
+    ctx.font = 'italic 50px 隶书'
+    ctx.textBaseline = 'top'
+
+    // 填充字符串
+    ctx.fillText('yzy我爱你！', 0, 0)
+    ctx.stokeStyle = 'f0f'
+    ctx.font = 'bold 45px 隶书'
+
+    // 绘制字符串的边框
+    ctx.strokeText('炉石传说，真你马好玩!', 0, 50, 200)
+  </script>
+</body>
+
+</html>

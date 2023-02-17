@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    canvas {
+      border: 1px solid plum;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+
+  <script>
+    /** @type {HTMLCanvasElement} */
+    let canvas = document.getElementById('canvas')
+    canvas.width = '600'
+    canvas.height = '400'
+    let ctx = canvas.getContext('2d')
+
+    ctx.translate(300, 200)
+    ctx.rotate(-Math.PI / 4)
+    ctx.scale(0.5, 1)
+    ctx.fillRect(-250, -25, 500, 50)
+  </script>
+</body>
+
+</html>

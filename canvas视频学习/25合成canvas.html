@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    canvas {
+      border: 1px solid plum;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+
+  <script>
+    /** @type {HTMLCanvasElement} */
+    let canvas = document.getElementById('canvas')
+    canvas.width = '600'
+    canvas.height = '400'
+    let ctx = canvas.getContext('2d')
+
+
+    ctx.fillStyle = 'rgba(0,0,255,1)'
+    ctx.fillRect(300, 200, 100, 100)
+    ctx.globalCompositeOperation = 'source-in'
+    ctx.fillStyle = 'rgba(255,0,0,1)'
+    ctx.fillRect(250, 150, 100, 100)
+  </script>
+</body>
+
+</html>

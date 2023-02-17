@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    function draw() {
+      let canvas = document.querySelector('#canvas')
+      let ctx = canvas.getContext('2d')
+
+      let lineCap = ['butt', 'round', 'square'];
+
+      ctx.strokeStyle = '#09f'
+      ctx.beginPath()
+      ctx.moveTo(10, 10)
+      ctx.lineTo(140, 10)
+      ctx.moveTo(10, 140)
+      ctx.lineTo(140, 140)
+      ctx.stroke()
+
+      ctx.strokeStyle = 'black';
+      for (var i = 0; i < lineCap.length; i++) {
+        ctx.lineWidth = 15;
+        ctx.lineCap = lineCap[i];
+        ctx.beginPath();
+        ctx.moveTo(25 + i * 50, 10);
+        ctx.lineTo(25 + i * 50, 140);
+        ctx.stroke();
+      }
+    }
+
+    draw()
+  </script>
+</body>
+
+</html>

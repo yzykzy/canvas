@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+
+  <script>
+    // 二次
+    function draw() {
+      /** @type {HTMLCanvasElement} */
+      let canvas = document.getElementById('canvas')
+      canvas.width = '1000'
+      canvas.height = '500'
+      let ctx = canvas.getContext('2d')
+
+      let heartPath = new Path2D()
+
+
+      heartPath.moveTo(300, 200)
+      heartPath.bezierCurveTo(350, 150, 400, 200, 300, 250)
+      heartPath.bezierCurveTo(200, 200, 250, 150, 300, 200)
+      ctx.stroke(heartPath)
+      console.log(heartPath, "hhhhhh")
+      let chatPath = new Path2D()
+      chatPath.moveTo(200, 300)
+      chatPath.quadraticCurveTo(150, 300, 150, 200);
+
+      chatPath.quadraticCurveTo(150, 100, 300, 100)
+
+      chatPath.quadraticCurveTo(450, 100, 450, 200)
+
+      chatPath.quadraticCurveTo(450, 300, 250, 300)
+
+      chatPath.quadraticCurveTo(250, 350, 150, 350)
+
+      chatPath.quadraticCurveTo(200, 350, 200, 300)
+
+
+      // 设置阴影
+      ctx.shadowOffsetX = 10
+      ctx.shadowOffsetY = 10
+
+      // 阴影模糊度
+      ctx.shadowBlur = 5
+        // 阴影的颜色 
+      ctx.shadowColor = 'rgba(255,100,200,1)'
+
+      ctx.stroke(chatPath)
+
+      ctx.fill(heartPath)
+
+      // 创建折线
+      let polyline = new Path2D('M10 10 h 80 v 80 h -80 z')
+
+
+
+      ctx.stroke(polyline)
+    }
+
+
+    draw()
+  </script>
+</body>
+
+</html>

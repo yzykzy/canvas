@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+
+  <script>
+    function draw() {
+      let canvas = document.querySelector('#canvas')
+      let ctx = canvas.getContext('2d')
+
+      ctx.font = "24px serif"
+      ctx.fillText("Hello World", 10, 50)
+    }
+
+    function draw2() {
+      let canvas = document.querySelector('#canvas')
+      let ctx = canvas.getContext('2d')
+
+      ctx.font = "24px serif"
+      ctx.strokeText("Hello World", 20, 100)
+    }
+
+    function draw3() {
+      let canvas = document.querySelector('#canvas')
+
+      let ctx = canvas.getContext('2d')
+
+      ctx.font = "24px serif"
+      ctx.textAlign = 'right'
+        // ctx.texBaseline = 'top'
+        // ctx.direction = 'rtl'
+      ctx.fillText("Hello World", 300, 100)
+
+      let text = ctx.measureText('foo')
+      console.log(text, "text")
+    }
+
+
+    draw()
+    draw2()
+    draw3()
+  </script>
+</body>
+
+</html>

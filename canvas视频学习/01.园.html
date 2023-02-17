@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+
+
+  <script>
+    function draw() {
+      /** @type {HTMLCanvasElement} */
+      let canvas = document.getElementById('canvas')
+      canvas.width = '1000'
+      canvas.height = '500'
+      let ctx = canvas.getContext('2d')
+      console.log(ctx, "ctx")
+        // arc是绘制圆弧的方法
+        // ctx.arc(圆心x，圆心y，半径,开始角度，结束的角度,顺时针或者逆时针)
+      ctx.beginPath()
+      ctx.arc(300, 200, 100, 0, Math.PI * 2)
+      ctx.moveTo(260, 150) //绘制不连续的路径
+
+      ctx.arc(250, 150, 10, 0, Math.PI * 2)
+      ctx.moveTo(360, 150)
+
+      ctx.arc(350, 150, 10, 0, Math.PI * 2)
+      ctx.moveTo(330, 250)
+      ctx.arc(300, 250, 30, 0, Math.PI)
+      ctx.stroke()
+      ctx.closePath()
+    }
+
+    draw()
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+
+  <script>
+    /** @type {HTMLCanvasElement} */
+    let canvas = document.getElementById('canvas')
+    canvas.width = '600'
+    canvas.height = '400'
+    let ctx = canvas.getContext('2d')
+
+    //  文字的大小 ， 字体
+
+    ctx.font = '100px Microsoft YaHei'
+
+    // ctx.fillText('无所谓，我会出手', 300, 200, 100) // (文本内容，x，y，绘制文字的最大宽度)
+
+    // 文本对齐选项  
+    ctx.textAlign = 'center' //start end left right center
+
+    // 文本基线对齐选项
+    ctx.textBaseline = 'middle' //top bottom alphabetic center
+
+    // 文本的方向
+    // ctx.direction = 'rtl' // 
+
+    // 预测量文本的宽度
+    let text = ctx.measureText('Hello!')
+    console.log(text, "text")
+    ctx.strokeText('hello!', 300, 200)
+
+    ctx.arc(300, 200, 5, 0, Math.PI * 2)
+    ctx.fill()
+  </script>
+</body>
+
+</html>

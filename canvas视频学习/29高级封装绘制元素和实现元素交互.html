@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+
+  <script>
+    /** @type {HTMLCanvasElement} */
+    let canvas = document.getElementById('canvas')
+    canvas.width = '1000'
+    canvas.height = '500'
+    let ctx = canvas.getContext('2d')
+
+    class Heart {
+      constructor(x, y) { //构造器
+        this.x = x
+        this.y = y
+        this.isIn = false //判断鼠标位置是否在图案内
+        this.color = 'red'
+        this.eventMapList = {
+            hover: [],
+            leave: []
+          }
+          // 使用箭头函数，来封装是因为能拿到最外层this
+        canvas.onmousemove = (e) => {
+          let x = e.offsetX
+          let y = e.offsetY
+          this.isIn = ctx.isPointInPath(this.heartPath, x, y)
+          if (this.isIn) {
+            this.eventMapList.hover.forEach((item) => {
+              item()
+            })
+          } else {
+            this.eventMapList.leave.forEach((item) => {
+              item()
+            })
+          }
+        }
+      }
+      onHover(fn) { // 用来添加鼠标进入图案路径里触发的方法
+        this.eventMapList.hover.push(fn)
+      }
+      onLeave(fn) { // 用来添加鼠标移出图案路径里触发的方法
+        this.eventMapList.leave.push(fn)
+      }
+      setPosition(x, y) {
+        this.x = x
+        this.y = y
+      }
+      draw() {
+        this.heartPath = new Path2D()
+        this.heartPath.moveTo(this.x, this.y)
+        this.heartPath.bezierCurveTo(this.x + 50, this.y - 50, this.x + 100, this.y, this.x, this.y + 50)
+        this.heartPath.bezierCurveTo(this.x - 100, this.y, this.x - 50, this.y - 50, this.x, this.y)
+        ctx.save()
+        ctx.fillStyle = this.color
+        ctx.fill(this.heartPath)
+
+        ctx.restore()
+      }
+
+
+    }
+
+
+    let heart = new Heart(100, 100)
+    heart.onHover(() => {
+      heart.color = 'yellow'
+        // heart.draw()
+    })
+    heart.onLeave(() => {
+      heart.color = 'red'
+    })
+
+    function render() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      heart.draw()
+      requestAnimationFrame(render)
+    }
+
+    render()
+  </script>
+</body>
+
+</html>

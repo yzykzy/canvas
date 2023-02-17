@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+
+  <script>
+    /** @type {HTMLCanvasElement} */
+    let canvas = document.getElementById('canvas')
+    canvas.width = '600'
+    canvas.height = '400'
+    let ctx = canvas.getContext('2d')
+
+    let img = new Image()
+    img.src = '../images/mm.jpg' //650*413
+
+    img.onload = function() {
+
+      ctx.drawImage(img, 0, 0, 600, 400) //（图片对象，x，y）
+
+      let imageData = ctx.getImageData(0, 0, 600, 400)
+
+      console.log(imageData)
+
+      // 循环修改数据    每个像素点是4个值为一组 rgba(0,0,0,0) 0-255
+      for (let i = 0; i < imageData.data.length; i += 4) {
+        // 计算当前像素的平均值 灰度值
+        let avg = (imageData.data[i] + imageData.data[i + 1] + imageData.data[i + 2]) / 3
+        imageData.data[i] = avg
+        imageData.data[i + 1] = avg
+        imageData.data[i + 2] = avg
+        imageData.data[i + 3] = 255
+      }
+
+      // for (let i = 0; i < imageData.data.length; i += 4) {
+      //   imageData.data[i] = 255 - imageData.data[i]
+      //   imageData.data[i + 1] = 255 - imageData.data[i + 1]
+      //   imageData.data[i + 2] = 255 - imageData.data[i + 2]
+      //   imageData.data[i + 3] = 255
+      // }
+      // 将修改的数据重新渲染到画布
+      ctx.putImageData(imageData, 0, 0, 260, 60, 150, 150)
+
+      console.log(imageData)
+
+    }
+  </script>
+</body>
+
+</html>

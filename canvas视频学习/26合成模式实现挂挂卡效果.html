@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    canvas {
+      border: 1px solid plum;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 2;
+    }
+    
+    #ggk {
+      width: 600px;
+      height: 400px;
+      font-size: 30px;
+      font-weight: 900;
+      text-align: center;
+      line-height: 400px;
+      overflow: hidden;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="ggk">谢谢惠顾!</div>
+  <canvas id="canvas"></canvas>
+
+  <script>
+    /** @type {HTMLCanvasElement} */
+    let canvas = document.getElementById('canvas')
+    canvas.width = '600'
+    canvas.height = '400'
+    let ctx = canvas.getContext('2d')
+
+    let img = new Image()
+    img.src = '../images/1632652889771170.jpg'
+    img.onload = function() {
+      ctx.drawImage(img, 0, 0, 600, 400)
+    }
+
+    let isDraw = false
+
+    canvas.onmousedown = function() {
+      isDraw = true
+    }
+
+    canvas.onmouseup = function() {
+      isDraw = false
+    }
+
+    canvas.onmousemove = function(e) {
+      if (isDraw) {
+        let x = e.pageX
+        let y = e.pageY
+
+        ctx.globalCompositeOperation = 'destination-out'
+
+        ctx.arc(x, y, 20, 0, Math.PI * 2)
+        ctx.fill()
+      }
+    }
+
+    let random = Math.random()
+    if (random < 0.1) {
+      let ggkDiv = document.querySelector('#ggk')
+      ggkDiv.innerHTML = "恭喜你获得华为 14 Pro max 爱国红 528G"
+    }
+  </script>
+</body>
+
+</html>

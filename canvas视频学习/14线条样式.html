@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="canvas">
+
+    </canvas>
+
+  <script>
+    /** @type {HTMLCanvasElement} */
+    let canvas = document.getElementById('canvas')
+    canvas.width = '600'
+    canvas.height = '400'
+    let ctx = canvas.getContext('2d')
+
+    ctx.moveTo(200, 150)
+
+    ctx.lineTo(300, 200)
+
+    ctx.lineTo(400, 150)
+
+    // 设置线条样式
+
+    // 线条宽度
+    ctx.lineWidth = 10
+
+    // 线条两端样式
+    ctx.lineCap = 'round' // 平齐 butt   半圆 round  正方形 square
+
+    // 线条外侧链接处样式
+    ctx.lineJoin = 'mitter' // 默认 mitter  圆 round  折平 bevel 
+      // 限制斜尖面 尖角超过限制会磨平
+    ctx.miterLimit = 5
+
+
+    ctx.stroke()
+  </script>
+</body>
+
+</html>
